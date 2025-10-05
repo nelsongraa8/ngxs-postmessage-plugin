@@ -1,8 +1,8 @@
 export default {
   displayName: 'demo',
-  preset: '../jest.preset.js',
+  preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../coverage/demo',
+  coverageDirectory: '../../coverage/apps/demo',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

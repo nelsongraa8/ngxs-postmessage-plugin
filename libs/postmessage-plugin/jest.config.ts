@@ -2,7 +2,7 @@ export default {
   displayName: 'postmessage-plugin',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/ngxs/postmessage-plugin',
+  coverageDirectory: '../../coverage/postmessage-plugin',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
