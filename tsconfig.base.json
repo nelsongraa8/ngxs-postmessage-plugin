@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@ngxs-postmessage/postmessage-plugin": [
-        "postmessage-plugin/src/index.ts"
+        "libs/postmessage-plugin/src/index.ts"
       ]
     }
   },

@@ -1,2 +1,2 @@
 export * from './lib/postmessage.module';
-export * from './lib/postmessage.plugin';
+export * from './lib/providers/postmessage.provider';
