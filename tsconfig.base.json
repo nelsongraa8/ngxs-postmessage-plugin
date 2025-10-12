@@ -14,6 +14,8 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
     "paths": {
       "@ngxs-postmessage/postmessage-plugin": [
         "libs/postmessage-plugin/src/index.ts"
