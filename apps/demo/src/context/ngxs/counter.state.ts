@@ -1,13 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-
-// Definición de acciones
-export class Increment {
-  static readonly type = '[Counter] Increment';
-}
-
-export class Decrement {
-  static readonly type = '[Counter] Decrement';
-}
+import { Increment, Decrement, Reset } from './counter.actions';
+import { Injectable } from '@angular/core';
 
 export interface CounterStateModel {
   count: number;
@@ -19,6 +12,7 @@ export interface CounterStateModel {
     count: 0,
   },
 })
+@Injectable()
 export class CounterState {
   @Selector()
   static getCount(state: CounterStateModel): number {
@@ -35,5 +29,11 @@ export class CounterState {
   decrement(ctx: StateContext<CounterStateModel>) {
     const state = ctx.getState();
     ctx.setState({ ...state, count: state.count - 1 });
+  }
+
+  @Action(Reset)
+  reset(ctx: StateContext<CounterStateModel>) {
+    const state = ctx.getState();
+    ctx.setState({ ...state, count: 0 });
   }
 }
