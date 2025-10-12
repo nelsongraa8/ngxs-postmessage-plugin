@@ -1,6 +1,6 @@
 import {
   EnvironmentProviders,
-  importProvidersFrom,
+  InjectionToken,
   makeEnvironmentProviders,
   ModuleWithProviders,
   NgModule,
@@ -8,11 +8,20 @@ import {
 } from '@angular/core';
 import { PostMessageModule } from '../postmessage.module';
 import { PostMessagePlugin } from '../plugins/postmessage.plugin';
+import { withNgxsPlugin } from '@ngxs/store';
+import {
+  NGXS_POSTMESSAGE_PLUGIN_OPTIONS,
+  NgxsPostmessagePluginOptions,
+} from './postmessage.options';
 
-export function providerPostMessagePlugin(
-  options?: Partial<NgxsPostmessagePluginOptions>
-): EnvironmentProviders {
-  return makeEnvironmentProviders(providersReturnPostMessagePlugin(options));
+export function withNgxsPostMessagePlugin(options?: any) {
+  return makeEnvironmentProviders([
+    withNgxsPlugin(PostMessagePlugin),
+    {
+      provide: NGXS_POSTMESSAGE_PLUGIN_OPTIONS,
+      useValue: options || {},
+    },
+  ]);
 }
 
 @NgModule({})
@@ -22,25 +31,18 @@ export class NgxsPostmessagePluginModule {
   ): ModuleWithProviders<PostMessageModule> {
     return {
       ngModule: PostMessageModule,
-      providers: providersReturnPostMessagePlugin(options),
+      providers: this.providersReturnPostMessagePlugin(options),
     };
   }
-}
 
-export function providersReturnPostMessagePlugin(
-  options?: Partial<NgxsPostmessagePluginOptions>
-): Provider[] {
-  return [
-    {
-      provide: 'NGXS_POSTMESSAGE_PLUGIN_OPTIONS',
-      useValue: options || {},
-    },
-    {
-      provide: 'NGXS_PLUGINS',
-      useClass: PostMessagePlugin,
-      multi: true,
-    },
-  ];
+  static providersReturnPostMessagePlugin(
+    options?: Partial<NgxsPostmessagePluginOptions>
+  ): Provider[] {
+    return [
+      {
+        provide: 'NGXS_PLUGINS',
+        useClass: PostMessagePlugin,
+      },
+    ];
+  }
 }
-
-export interface NgxsPostmessagePluginOptions {}
