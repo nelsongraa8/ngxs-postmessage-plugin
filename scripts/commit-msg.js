@@ -6,24 +6,23 @@ const fs = require('fs');
 const commitFile = process.argv[2];
 const msg = fs.readFileSync(commitFile, 'utf-8').trim();
 
-console.log('📝 Verificando que el mensaje de commit cumpla con las reglas de commitlint...');
+console.log('📝 Checking if the commit message follows Commitlint rules...');
 try {
   execSync(`npx commitlint --edit "${commitFile}"`, { stdio: 'pipe' });
-  console.log('✅ El mensaje del commit cumple las reglas de Commitlint.');
+  console.log('✅ Commit message follows Commitlint rules.');
 } catch {
-  console.error('❌ El mensaje del commit no cumple las reglas de Commitlint.');
+  console.error('❌ Commit message does not follow Commitlint rules.');
   process.exit(1);
 }
 
-console.log('📝 Verificando longitud del mensaje de commit...');
+console.log('📝 Checking commit message length...');
 if (msg.length < 15) {
-  console.warn(`❌ Mensaje muy corto (${msg.length} caracteres), intenta ser más descriptivo.`);
+  console.warn(`❌ Commit message too short (${msg.length} characters). Please be more descriptive.`);
 }
 if (msg.length > 200) {
-  console.warn(`❌ Mensaje muy largo (${msg.length} caracteres), intenta resumirlo.`);
+  console.warn(`❌ Commit message too long (${msg.length} characters). Please summarize it.`);
 }
 
-console.log(`✅ Mensaje de commit verificado correctamente.`);
-console.log(`¡Buen trabajo, ${execSync('git config user.name').toString().trim()}! 🎉`);
+console.log('✅ Commit message successfully verified.');
 
 process.exit(0);
