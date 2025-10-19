@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { PostMessageModule } from '@ngxs-postmessage/postmessage-plugin';
 import { Store } from '@ngxs/store';
 import { Decrement, Increment, Reset } from '../context/ngxs/counter.actions';
 import { CounterState } from '../context/ngxs/counter.state';
+import { NgxsPostMessagePluginModule } from '@ngxs-postmessage/postmessage-plugin';
 
 @Component({
-  imports: [RouterModule, PostMessageModule],
+  imports: [RouterModule, NgxsPostMessagePluginModule],
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',

@@ -8,8 +8,10 @@ import { appRoutes } from './app.routes';
 import { provideStore } from '@ngxs/store';
 import { CounterState } from '../context/ngxs/counter.state';
 import { withNgxsLoggerPlugin } from '@ngxs/logger-plugin';
-import { withNgxsPostMessagePlugin } from '@ngxs-postmessage/postmessage-plugin';
-import { NgxsPostmessagePluginOptions } from 'libs/postmessage-plugin/src/lib/providers/postmessage.options';
+import {
+  NgxsPostmessagePluginOptions,
+  withNgxsPostMessagePlugin,
+} from '@ngxs-postmessage/postmessage-plugin';
 
 export const SimplePostMessageConfig: NgxsPostmessagePluginOptions = {
   send: {
