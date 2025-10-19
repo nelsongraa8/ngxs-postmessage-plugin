@@ -7,7 +7,7 @@ import {
   Provider,
 } from '@angular/core';
 import { PostMessageModule } from '../postmessage.module';
-import { PostMessagePlugin } from '../plugins/postmessage.plugin';
+import { PostMessagePlugin } from '../plugin/postmessage.plugin';
 import { withNgxsPlugin } from '@ngxs/store';
 import {
   NGXS_POSTMESSAGE_PLUGIN_OPTIONS,

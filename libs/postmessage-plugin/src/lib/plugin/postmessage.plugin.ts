@@ -9,6 +9,11 @@ import {
   providedIn: 'root',
 })
 export class PostMessagePlugin implements NgxsPlugin {
+  constructor(
+    @Inject(NGXS_POSTMESSAGE_PLUGIN_OPTIONS)
+    private options: NgxsPostmessagePluginOptions
+  ) {}
+
   handle(state: any, action: any, next: NgxsNextPluginFn) {
     console.info('Posting message to other windows/frames');
 
