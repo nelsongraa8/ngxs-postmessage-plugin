@@ -1,9 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { NgxsNextPluginFn, NgxsPlugin } from '@ngxs/store/plugins';
-import {
-  NGXS_POSTMESSAGE_PLUGIN_OPTIONS,
-  NgxsPostmessagePluginOptions,
-} from '../providers/postmessage.options';
+import { NgxsPostmessagePluginOptions } from '../symbols/interfaces/options';
+import { NGXS_POSTMESSAGE_PLUGIN_OPTIONS } from '../symbols/interfaces/tokens';
 
 @Injectable({
   providedIn: 'root',

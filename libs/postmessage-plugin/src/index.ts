@@ -1,3 +1,4 @@
-export * from './lib/postmessage.module';
-export * from './lib/providers/postmessage.provider';
+export * from './lib/symbols/interfaces/options';
+export * from './lib/symbols/interfaces/tokens';
 export * from './lib/plugin/postmessage.plugin';
+export * from './lib/module/postmessage.module';
