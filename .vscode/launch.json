@@ -3,13 +3,71 @@
 	// Mantenga el puntero para ver las descripciones de los existentes atributos.
 	// Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
+	"compounds": [
+		{
+			"name": "Launch Edge and attach DevTools",
+			"configurations": [
+				"Launch Microsoft Edge",
+				"Open Edge DevTools"
+			]
+		},
+		{
+			"name": "Launch Edge Headless and attach DevTools",
+			"configurations": [
+				"Launch Microsoft Edge in headless mode",
+				"Open Edge DevTools"
+			]
+		},
+	],
 	"configurations": [
 		{
 			"type": "msedge",
+			"name": "Launch Microsoft Edge",
 			"request": "launch",
-			"name": "Iniciar Microsoft Edge para localhost",
+			"runtimeArgs": [
+				"--remote-debugging-port=9222"
+			],
 			"url": "http://localhost:4200",
-			"webRoot": "${workspaceFolder}"
+			"presentation": {
+				"hidden": true
+			},
+			"skipFiles": [
+				"edge://**",
+				"chrome://**",
+				"chrome-error://**"
+			],
+			"webRoot": "${workspaceFolder}",
+			"preLaunchTask": "pnpm start"
+		},
+		{
+			"type": "msedge",
+			"name": "Launch Microsoft Edge in headless mode",
+			"request": "launch",
+			"runtimeArgs": [
+				"--headless",
+				"--remote-debugging-port=9222"
+			],
+			"url": "http://localhost:4200",
+			"presentation": {
+				"hidden": true
+			},
+			"skipFiles": [
+				"edge://**",
+				"chrome://**",
+				"chrome-error://**"
+			],
+			"trace": true,
+			"webRoot": "${workspaceFolder}",
+			// "preLaunchTask": "pnpm start"
+		},
+		{
+			"type": "vscode-edge-devtools.debug",
+			"name": "Open Edge DevTools",
+			"request": "attach",
+			"url": "http://localhost:4200",
+			"presentation": {
+				"hidden": true
+			}
 		}
-	]
+	],
 }
