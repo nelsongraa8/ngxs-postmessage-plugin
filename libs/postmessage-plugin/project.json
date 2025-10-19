@@ -1,7 +1,7 @@
 {
   "name": "postmessage-plugin",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "postmessage-plugin/src",
+  "sourceRoot": "libs/postmessage-plugin/src",
   "prefix": "lib",
   "projectType": "library",
   "tags": [],
@@ -10,12 +10,18 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "postmessage-plugin/jest.config.ts",
-        "tsConfig": "postmessage-plugin/tsconfig.spec.json"
+        "jestConfig": "libs/postmessage-plugin/jest.config.ts",
+        "tsConfig": "libs/postmessage-plugin/tsconfig.spec.json"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
+    },
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "options": {
+        "project": "libs/postmessage-plugin/ng-package.json"
+      }
     }
   }
 }
