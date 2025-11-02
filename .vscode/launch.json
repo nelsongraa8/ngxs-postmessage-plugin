@@ -10,14 +10,7 @@
 				"Launch Microsoft Edge",
 				"Open Edge DevTools"
 			]
-		},
-		{
-			"name": "Launch Edge Headless and attach DevTools",
-			"configurations": [
-				"Launch Microsoft Edge in headless mode",
-				"Open Edge DevTools"
-			]
-		},
+		}
 	],
 	"configurations": [
 		{
@@ -37,7 +30,6 @@
 				"chrome-error://**"
 			],
 			"webRoot": "${workspaceFolder}",
-			"preLaunchTask": "pnpm start"
 		},
 		{
 			"type": "msedge",
@@ -58,7 +50,6 @@
 			],
 			"trace": true,
 			"webRoot": "${workspaceFolder}",
-			// "preLaunchTask": "pnpm start"
 		},
 		{
 			"type": "vscode-edge-devtools.debug",
