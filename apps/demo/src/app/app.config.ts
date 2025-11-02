@@ -16,27 +16,50 @@ import {
 export const SimplePostMessageConfig: NgxsPostmessagePluginOptions = {
   send: {
     actions: [
-      { type: 'Increment', to: ['*'] },
-      { type: 'Decrement', to: ['https://analytics.app'] },
+      {
+        type: 'Increment',
+        to: ['*'],
+        targets: () =>
+          document.getElementById(
+            'childrenExampleAppTest'
+          ) as HTMLIFrameElement,
+      },
+      {
+        type: 'Decrement',
+        to: ['https://analytics.app'],
+        targets: () =>
+          document.getElementById(
+            'childrenExampleAppTest'
+          ) as HTMLIFrameElement,
+      },
     ],
-    states: [{ type: 'counter', to: ['*', 'https://analytics.app'] }],
+    states: [
+      {
+        type: 'counter',
+        to: ['*', 'https://analytics.app'],
+        targets: () =>
+          document.getElementById(
+            'childrenExampleAppTest'
+          ) as HTMLIFrameElement,
+      },
+    ],
   },
 };
 
-export const ExtremePostMessageConfig: NgxsPostmessagePluginOptions = {
-  targets: [
-    { name: 'all', origin: ['*'], transfer: ['*'] },
-    {
-      name: 'analytics',
-      origin: ['https://analytics.app'],
-      transfer: [''],
-    },
-  ],
-  send: {
-    actions: [{ type: '*', targets: ['all'], mode: 'all' }],
-    states: [{ type: '*', targets: ['all', 'analytics'], mode: 'change' }],
-  },
-};
+// export const ExtremePostMessageConfig: NgxsPostmessagePluginOptions = {
+//   targets: [
+//     { name: 'all', origin: ['*'], transfer: ['*'] },
+//     {
+//       name: 'analytics',
+//       origin: ['https://analytics.app'],
+//       transfer: [''],
+//     },
+//   ],
+//   send: {
+//     actions: [{ type: '*', targets: ['all'], mode: 'all' }],
+//     states: [{ type: '*', targets: ['all', 'analytics'], mode: 'change' }],
+//   },
+// };
 
 export const appConfig: ApplicationConfig = {
   providers: [
