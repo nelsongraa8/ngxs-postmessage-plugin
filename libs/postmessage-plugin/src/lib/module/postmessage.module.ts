@@ -7,7 +7,8 @@ import {
 import { PostMessagePlugin } from '../plugin/postmessage.plugin';
 import { NgxsPostmessagePluginOptions } from '../symbols/interfaces/options';
 import { withNgxsPlugin } from '@ngxs/store';
-import { NGXS_POSTMESSAGE_PLUGIN_OPTIONS } from '../symbols/interfaces/tokens';
+import { NGXS_POSTMESSAGE_PLUGIN_OPTIONS } from '../symbols/tokens';
+import { HandlerManager } from '../handlers/send-father.handler';
 
 @NgModule({
   imports: [],
