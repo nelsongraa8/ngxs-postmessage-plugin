@@ -11,13 +11,13 @@ export interface SendOptions {
 export interface SendOptionState {
   type: string;
   to?: string[];
-  targets?: string[];
+  targets?: () => HTMLIFrameElement | HTMLIFrameElement[];
   mode?: 'change' | 'all';
 }
 
 export interface SendOptionAction {
   type: string;
   to?: string[];
-  targets?: string[];
+  targets?: () => HTMLIFrameElement | HTMLIFrameElement[] | null;
   mode?: 'change' | 'all';
 }

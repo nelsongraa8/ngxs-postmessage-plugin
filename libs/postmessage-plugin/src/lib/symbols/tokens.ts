@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import { NgxsPostmessagePluginOptions } from './options';
+import { NgxsPostmessagePluginOptions } from './interfaces/options';
 
 export const NGXS_POSTMESSAGE_PLUGIN_OPTIONS =
   new InjectionToken<NgxsPostmessagePluginOptions>(
