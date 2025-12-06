@@ -6,14 +6,12 @@ import {
 } from '@angular/core';
 import { PostMessagePlugin } from '../plugin/postmessage.plugin';
 import { NgxsPostmessagePluginOptions } from '../symbols/interfaces/options';
-import { withNgxsPlugin } from '@ngxs/store';
+import { NgxsModule, provideStates, withNgxsPlugin } from '@ngxs/store';
 import { NGXS_POSTMESSAGE_PLUGIN_OPTIONS } from '../symbols/tokens';
-import { HandlerManager } from '../handlers/send-father.handler';
+import { PostMessageInternalState } from '../handlers/post-message-internal.state';
 
 @NgModule({
-  imports: [],
-  exports: [],
-  declarations: [],
+  imports: [NgxsModule.forFeature([PostMessageInternalState])],
 })
 export class NgxsPostMessagePluginModule {
   static forRoot(
@@ -32,6 +30,7 @@ export class NgxsPostMessagePluginModule {
       {
         provide: 'NGXS_PLUGINS',
         useClass: PostMessagePlugin,
+        multi: true,
       },
     ];
   }
@@ -39,6 +38,7 @@ export class NgxsPostMessagePluginModule {
 
 export function withNgxsPostMessagePlugin(options?: any) {
   return makeEnvironmentProviders([
+    provideStates([PostMessageInternalState]),
     withNgxsPlugin(PostMessagePlugin),
     {
       provide: NGXS_POSTMESSAGE_PLUGIN_OPTIONS,
