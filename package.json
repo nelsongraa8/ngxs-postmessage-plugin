@@ -3,9 +3,12 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "pnpm nx serve demo",
-    "prepare": "husky",
-    "build": "pnpm nx build postmessage-plugin"
+    "start": "pnpm nx run-many --target=serve --projects=example-host,example-embedded --parallel --verbose",
+    "start:host": "pnpm nx serve example-host",
+    "start:embedded": "pnpm nx serve example-embedded",
+    "build": "pnpm nx build postmessage-plugin",
+    "reset:cache": "pnpm nx reset",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
