@@ -20,6 +20,8 @@ export class FatherComponent {
       .select(CounterState.getCount)
       .subscribe((number) => (this.number = number));
     this.store.dispatch(new Increment(this.number));
+
+    window.addEventListener('message', (event) => this.messageListener(event));
   }
 
   increment() {
@@ -50,5 +52,13 @@ export class FatherComponent {
     primitive = value as string | number | boolean | null;
 
     iframe.contentWindow.postMessage(primitive, 'http://localhost:4300');
+  }
+
+  messageListener(event: MessageEvent) {
+    if (event.origin !== 'http://localhost:4300') return;
+
+    const data = event.data;
+
+    console.log('Father received message:', data);
   }
 }
