@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { CounterState } from '../ngxs/counter.state';
-import { PostMessageInternalState } from 'libs/postmessage-plugin/src/lib/handlers/post-message-internal.state';
+import {
+  PostMessageInternalState,
+  PushOutgoing,
+} from 'libs/postmessage-plugin/src/lib/handlers/post-message-internal.state';
 
 @Component({
   selector: 'app-children',
@@ -15,11 +17,11 @@ export class ChildrenComponent implements OnInit {
 
   ngOnInit(): void {
     this.store
-      .select(CounterState.getCount)
+      .select(PostMessageInternalState.getIncoming)
       .subscribe((state) => (this.number = state));
+  }
 
-    this.store
-      .select(PostMessageInternalState.getExternalDataInsidePlugin)
-      .subscribe((state) => (this.number = state));
+  sendEverOneHundred() {
+    this.store.dispatch(new PushOutgoing('envie esto desde el iframe'));
   }
 }
