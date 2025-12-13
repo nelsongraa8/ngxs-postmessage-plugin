@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
+
 import {
-  PostMessageInternalState,
-  PushOutgoing,
-} from 'libs/postmessage-plugin/src/lib/handlers/post-message-internal.state';
+  EmbeddedPostMessageBusStateExport,
+  NgxsPmEmbeddedSend,
+} from '@ngxs-postmessage/postmessage-plugin';
 
 @Component({
   selector: 'app-children',
@@ -11,17 +12,17 @@ import {
   standalone: true,
 })
 export class ChildrenComponent implements OnInit {
-  number!: number;
+  number!: any;
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.store
-      .select(PostMessageInternalState.getIncoming)
+      .select(EmbeddedPostMessageBusStateExport.getReceivedMessages)
       .subscribe((state) => (this.number = state));
   }
 
   sendEverOneHundred() {
-    this.store.dispatch(new PushOutgoing('envie esto desde el iframe'));
+    this.store.dispatch(new NgxsPmEmbeddedSend('envie esto desde el iframe'));
   }
 }
