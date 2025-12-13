@@ -6,21 +6,21 @@
   "compounds": [
     {
       "name": "Launch Google Chrome (light)",
-      "configurations": ["Launch Google Chrome"]
+      "configurations": ["Launch_Google_Chrome"]
     },
     {
-      "name": "Launch Edge and attach DevTools",
-      "configurations": ["Launch Microsoft Edge"]
+      "name": "Launch Microsoft Edge",
+      "configurations": ["Launch_Microsoft_Edge"]
     },
     {
-      "name": "Launch Edge headless mode",
-      "configurations": ["Launch Microsoft Edge in headless mode"]
+      "name": "Launch Microsoft Edge in headless mode",
+      "configurations": ["Launch_Microsoft_Edge_in_headless_mode"]
     }
   ],
   "configurations": [
     {
       "type": "chrome",
-      "name": "Launch Google Chrome",
+      "name": "Launch_Google_Chrome",
       "request": "launch",
       "runtimeExecutable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
       "runtimeArgs": [
@@ -61,7 +61,7 @@
     },
     {
       "type": "msedge",
-      "name": "Launch Microsoft Edge",
+      "name": "Launch_Microsoft_Edge",
       "request": "launch",
       "runtimeArgs": [
         "--remote-debugging-port=9222",
@@ -82,7 +82,7 @@
     },
     {
       "type": "msedge",
-      "name": "Launch Microsoft Edge in headless mode",
+      "name": "Launch_Microsoft_Edge_in_headless_mode",
       "request": "launch",
       "runtimeArgs": [
         "--headless",
