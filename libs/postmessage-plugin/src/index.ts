@@ -1,13 +1,20 @@
-// Provider and Module
-export { NgxsPostMessagePluginModule as NgxsPostMessagePluginModule } from './lib/module/postmessage.module';
-export { withNgxsPostMessagePlugin as withNgxsPostMessagePlugin } from './lib/module/ngxs-post-message-plugin.provider';
+import { NgxsPostMessagePluginModule } from './lib/module/postmessage.module';
+import { withNgxsPostMessagePlugin } from './lib/module/ngxs-post-message-plugin.provider';
+import { NgxsPostmessagePluginOptions } from './lib/symbols/interfaces/options';
+import {
+  NgxsPmEmbeddedSend,
+  NgxsPmEmbeddedReceive,
+} from './lib/handlers/embedded/embedded-post-message-bus.state';
+import { EmbeddedPostMessageBusState } from './lib/handlers/embedded/embedded-post-message-bus.state';
 
-// Interface for Options
-export type { NgxsPostmessagePluginOptions as NgxsPostmessagePluginOptions } from './lib/symbols/interfaces/options';
-
-// Actions and State for Embedded Post Message Bus
+// API pública
 export {
+  NgxsPostMessagePluginModule as NgxsPostMessagePluginModule,
+  withNgxsPostMessagePlugin as withNgxsPostMessagePlugin,
   NgxsPmEmbeddedSend as NgxsPmEmbeddedSend,
   NgxsPmEmbeddedReceive as NgxsPmEmbeddedReceive,
-} from './lib/handlers/embedded/embedded-post-message-bus.state';
-export { EmbeddedPostMessageBusState as EmbeddedPostMessageBusStateExport } from './lib/handlers/embedded/embedded-post-message-bus.state';
+  EmbeddedPostMessageBusState as EmbeddedPostMessageBusState,
+};
+
+// Interface for Options
+export type { NgxsPostmessagePluginOptions as NgxsPostmessagePluginOptions };

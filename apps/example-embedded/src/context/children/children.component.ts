@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 
 import {
-  EmbeddedPostMessageBusStateExport,
+  EmbeddedPostMessageBusState,
   NgxsPmEmbeddedSend,
 } from '@ngxs-postmessage/postmessage-plugin';
 
@@ -18,7 +18,7 @@ export class ChildrenComponent implements OnInit {
 
   ngOnInit(): void {
     this.store
-      .select(EmbeddedPostMessageBusStateExport.getReceivedMessages)
+      .select(EmbeddedPostMessageBusState.getReceivedMessages)
       .subscribe((state) => (this.number = state));
   }
 

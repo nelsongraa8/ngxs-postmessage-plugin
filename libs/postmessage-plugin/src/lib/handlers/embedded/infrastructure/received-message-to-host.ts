@@ -21,13 +21,12 @@ export class ReceivedMessageToHost implements PostMessageFeature {
 
       if (!message) return;
 
+      this.initializeStore();
       this.sendToInternalState(message);
     });
   }
 
   private sendToInternalState(message: unknown): void {
-    this.initializeStore();
-
     this.store.dispatch(new NgxsPmEmbeddedReceive(message));
   }
 
