@@ -1,17 +1,11 @@
-import {
-  makeEnvironmentProviders,
-  ModuleWithProviders,
-  NgModule,
-  Provider,
-} from '@angular/core';
+import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 import { PostMessagePlugin } from '../plugin/postmessage.plugin';
 import { NgxsPostmessagePluginOptions } from '../symbols/interfaces/options';
-import { NgxsModule, provideStates, withNgxsPlugin } from '@ngxs/store';
-import { NGXS_POSTMESSAGE_PLUGIN_OPTIONS } from '../symbols/tokens';
-import { PostMessageInternalState } from '../handlers/post-message-internal.state';
+import { NgxsModule } from '@ngxs/store';
+import { EmbeddedPostMessageBusState } from '../handlers/embedded/embedded-post-message-bus.state';
 
 @NgModule({
-  imports: [NgxsModule.forFeature([PostMessageInternalState])],
+  imports: [NgxsModule.forFeature([EmbeddedPostMessageBusState])],
 })
 export class NgxsPostMessagePluginModule {
   static forRoot(
@@ -34,15 +28,4 @@ export class NgxsPostMessagePluginModule {
       },
     ];
   }
-}
-
-export function withNgxsPostMessagePlugin(options?: any) {
-  return makeEnvironmentProviders([
-    provideStates([PostMessageInternalState]),
-    withNgxsPlugin(PostMessagePlugin),
-    {
-      provide: NGXS_POSTMESSAGE_PLUGIN_OPTIONS,
-      useValue: options || {},
-    },
-  ]);
 }
