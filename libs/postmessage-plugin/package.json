@@ -1,6 +1,9 @@
 {
-  "name": "@your-org/postmessage-plugin",
-  "version": "0.0.1",
+  "name": "@microcosmix/ngxs-postmessage",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "@angular/core": "^20.0.0",
     "@ngxs/store": "^3.7.5"
